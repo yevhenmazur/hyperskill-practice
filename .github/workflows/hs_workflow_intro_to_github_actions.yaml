@@ -1,9 +1,12 @@
-name: commit_checkout
+name: hs_workflow_intro_to_github_actions
 on: [push]
 jobs:
-  external-workflow:
+  show-secret-phrase:
     runs-on: ubuntu-latest
     steps:
-      - uses: abystoma/external-workflow@3eb718710f20d7df6874acdc41e189a2ae4182f5
-      - name: Greetings
-        run: echo "$(<greeting.txt)"
+      - uses: actions/checkout@v3
+        with:
+         repository: abystoma/test
+         ref: main
+      - name: Show me the answer
+        run: cat answer.txt
